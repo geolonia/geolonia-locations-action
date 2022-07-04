@@ -21,16 +21,15 @@ jobs:
       ## Prepare vector data. For example, Shape, GeoJSON, GeoJSON in ndjson format, etc.
       - name: Download Natural Earth data for test
          run: |
-         curl https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip > ne_10m_admin_0_countries.zip
-         unzip ne_10m_admin_0_countries.zip
+           curl -sL https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip > ne_10m_admin_0_countries.zip
+           unzip ne_10m_admin_0_countries.zip
 
       # Generate tiles 🚀
       - name: Generate vector tiles step
         uses: ./
         id: generate_vector_tiles
         with:
-          sources: ./ne_10m_admin_0_countries/ne_10m_admin_0_countries.shp
-          out_dir: ./tiles
+          sources: ./ne_10m_admin_0_countries.shp
 
       - name: test
         run: ls -la tiles
@@ -42,3 +41,8 @@ jobs:
           branch: 'gh-pages'
           folder: ./tiles
 ```
+
+## Configurations
+
+|key|description|type|required|default|
+|`sources`|Path to your vector data. |
