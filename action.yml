@@ -7,6 +7,10 @@ inputs:
   output_dir:
     description: '*.MVT output dir'
     required: true
+  source_layer_name:
+    description: 'mbtiles source layer name'
+    default: 'out'
+    required: false
 
 runs:
   using: 'docker'
@@ -15,3 +19,4 @@ runs:
   args:
     - ${{ inputs.input_files }}
     - ${{ inputs.output_dir }}
+    - ${{ inputs.source_layer_name }}
