@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download Natural Earth data for test
-         run: |
+        run: |
           curl https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip > ne_10m_admin_0_countries.zip
           unzip ne_10m_admin_0_countries.zip
 
