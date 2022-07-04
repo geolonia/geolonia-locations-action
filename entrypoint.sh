@@ -14,6 +14,8 @@ tippecanoe -zg \
   --no-tile-compression \
   $INPUT
 
+mkdir -p $OUTPUT_DIR
+rmdir $OUTPUT_DIR
 mb-util --image_format=pbf ./${SOURCE_LAYER_NAME}.mbtiles $OUTPUT_DIR
 find $OUTPUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 
