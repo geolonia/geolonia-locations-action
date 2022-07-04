@@ -14,6 +14,6 @@ if [ -d $OUTPUT_DIR ]; then
   find $OUTPUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
   cp ./assets/index.html $OUTPUT_DIR
   cat $OUTPUT_DIR/metadata.json | \
-  	jq ".tiles |= [\"https://${GITHUB_USERNAME}.github.io/${GITHUB_REPONAME}/{z}/{x}/{y}.mvt\"]" > \
+  	jq ".tiles |= [\"https://${GITHUB_USERNAME}.github.io/${GITHUB_REPOSITORY}/{z}/{x}/{y}.mvt\"]" > \
 	tiles.json
 fi

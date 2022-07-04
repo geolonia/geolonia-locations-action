@@ -18,7 +18,7 @@ RUN apt-get install -y python3 python3-setuptools python-is-python3
 RUN git clone https://github.com/mapbox/mbutil.git
 RUN cd mbutil && python setup.py install
 
-RUN apt-get install jq
+RUN apt-get install -y jq
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
