@@ -11,9 +11,9 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    GITHUB_USERNAME: ${{ env.GITHUB_USERNAME }}
-    GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}
+
   args:
+    - ${{ env.GITHUB_USERNAME }}
+    - ${{ env.GITHUB_REPOSITORY }}
     - ${{ inputs.input_files }}
     - ${{ inputs.output_dir }}

@@ -2,8 +2,10 @@
 
 set -eu
 
-INPUT=$1
-OUTPUT_DIR=$2
+GITHUB_USERNAME=$1
+GITHUB_REPOSITORY=$2
+INPUT=$3
+OUTPUT_DIR=$4
 
 # $1: output.mbtiles
 # $1: input files (shape, geojsons)
