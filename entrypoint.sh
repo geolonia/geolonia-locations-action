@@ -8,16 +8,16 @@ SOURCE_LAYER_NAME=$3
 BASE_URL="https://kamataryo.github.io/vector-tile-action"
 
 tippecanoe -zg \
-  -o ${SOUCE_LAYER_NAME}.mbtiles \
+  -o ${SOURCE_LAYER_NAME}.mbtiles \
   --drop-densest-as-needed \
-  -l $SOUCE_LAYER_NAME \
+  -l $SOURCE_LAYER_NAME \
   --no-tile-compression \
   $INPUT
 
-mb-util --image_format=pbf ./${SOUCE_LAYER_NAME}.mbtiles $OUTPUT_DIR
+mb-util --image_format=pbf ./${SOURCE_LAYER_NAME}.mbtiles $OUTPUT_DIR
 find $OUTPUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 
-cat ./assets/index.html |  sed -e "s/%%source_layer_name%%/${SOUCE_LAYER_NAME}/g" > $OUTPUT_DIR/index.html
+cat ./assets/index.html |  sed -e "s/%%source_layer_name%%/${SOURCE_LAYER_NAME}/g" > $OUTPUT_DIR/index.html
 cat $OUTPUT_DIR/metadata.json | \
   jq ".tiles |= [\"${BASE_URL}/{z}/{x}/{y}.mvt\"]" > \
   $OUTPUT_DIR/tiles.json
