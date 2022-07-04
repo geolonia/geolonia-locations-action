@@ -14,8 +14,11 @@ jobs:
           input_files: ./test.geojsons
           output_dir: ./tiles
 
+      - name: test
+        run: ls -la
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: 'gh-pages'
-          folder: tiles
+          folder: ./tiles
