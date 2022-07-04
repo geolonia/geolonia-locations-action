@@ -14,4 +14,4 @@ cp ./assets/index.html $OUTPUT_DIR
 
 cat $OUTPUT_DIR/metadata.json | \
   jq ".tiles |= [\"${BASE_URL}/${OUTPUT_DIR}/{z}/{x}/{y}.mvt\"]" > \
-  tiles.json
+  $OUTPUT_DIR/tiles.json
