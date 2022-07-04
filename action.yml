@@ -1,0 +1,15 @@
+name: 'Generate Vector tile'
+description: 'generate mbtiles with tippeacanoe'
+inputs:
+  input_files:
+    description: 'Converting geometries'
+    required: true
+  output_dir:
+    description: '*.MVT output dir'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.input_files }}
+    - ${{ inputs.output_dir }}
