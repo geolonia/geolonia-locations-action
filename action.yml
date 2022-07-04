@@ -13,7 +13,6 @@ runs:
   image: 'Dockerfile'
 
   args:
-    - ${{ env.GITHUB_USERNAME }}
-    - ${{ env.GITHUB_REPOSITORY }}
+    - ${{ github.event.repository.name }}
     - ${{ inputs.input_files }}
     - ${{ inputs.output_dir }}
