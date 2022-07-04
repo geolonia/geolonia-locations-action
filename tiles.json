@@ -12,6 +12,6 @@
   "generator_options": "tippecanoe -zg -o out.mbtiles --drop-densest-as-needed -l out --no-tile-compression ./assets/test.geojsons",
   "json": "{\"vector_layers\": [ { \"id\": \"out\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 10, \"fields\": {} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"out\",\"count\": 4,\"geometry\": \"Point\",\"attributeCount\": 0,\"attributes\": []}]}}",
   "tiles": [
-    "https://kamataryo.github.io/vector-tile-action/./tiles/{z}/{x}/{y}.mvt"
+    "https://kamataryo.github.io/vector-tile-action/{z}/{x}/{y}.mvt"
   ]
 }
