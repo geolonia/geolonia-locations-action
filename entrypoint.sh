@@ -5,7 +5,7 @@ set -eu
 INPUT=$1
 OUTPUT_DIR=$2
 SOURCE_LAYER_NAME=$3
-BASE_URL="https://kamataryo.github.io/vector-tile-action"
+BASE_URL="https://kamataryo.github.io/vector-tiles-action"
 
 tippecanoe -zg \
   -o ${SOURCE_LAYER_NAME}.mbtiles \

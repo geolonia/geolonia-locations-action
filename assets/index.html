@@ -19,12 +19,12 @@
 	<script src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
 	<script>
 		const map = new window.geolonia.Map('#map')
-		const source_id = '___geolonia_vector_tile_action_source'
+		const source_id = '___geolonia_vector_tiles_action_source'
 
 		map.on('load', () => {
 			map.addSource(source_id, {
 				type: 'vector',
-				url: 'https://kamataryo.github.io/vector-tile-action/tiles.json',
+				url: 'https://kamataryo.github.io/vector-tiles-action/tiles.json',
 				maxzoom: 10,
 			})
 

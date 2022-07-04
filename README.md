@@ -5,7 +5,7 @@ A GitHub Action to generate vector tiles.
 ## sample
 
 ```yaml
-- name: Generate vector tile step
+- name: Generate vector tiles step
   uses: ./
   with:
     input_files: ./assets/test.geojsons

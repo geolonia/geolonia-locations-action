@@ -3,20 +3,20 @@ on: [push]
 jobs:
   generate_tile_job:
     runs-on: ubuntu-latest
-    name: A job to generate vector tile
+    name: A job to generate vector tiles
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate vector tile step
+      - name: Generate vector tiles step
         uses: ./
-        id: generate_vector_tile
+        id: generate_vector_tiles
         with:
           input_files: ./assets/test.geojsons
           output_dir: ./docs/tiles
 
       - name: test
-        run: ls -la && cat ./tiles/tiles.json
+        run: ls -la && cat ./docs/tiles/tiles.json
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
