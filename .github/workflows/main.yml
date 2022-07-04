@@ -13,7 +13,7 @@ jobs:
         id: generate_vector_tile
         with:
           input_files: ./assets/test.geojsons
-          output_dir: ./tiles
+          output_dir: ./docs/tiles
 
       - name: test
         run: ls -la && cat ./tiles/tiles.json
@@ -22,4 +22,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: 'gh-pages'
-          folder: ./tiles
+          folder: ./docs
