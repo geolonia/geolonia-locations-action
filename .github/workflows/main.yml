@@ -15,7 +15,7 @@ jobs:
           output_dir: ./tiles
 
       - name: test
-        run: ls -la
+        run: ls -la && cat ./tiles/tiles.json
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
