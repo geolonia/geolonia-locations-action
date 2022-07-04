@@ -29,13 +29,13 @@
 			})
 
 			map.addLayer({
-				id: source_id + '__circle',
-				type: 'circle',
+				id: source_id + '__fill',
+				type: 'fill',
 				source: source_id,
-				'source-layer': '%%source_layer_name%%',
+				'source-layer': '%%layer_name%%',
 				paint: {
-					'circle-radius': 3,
-					'circle-color': 'red',
+					'fill-color': 'red',
+					'fill-opacity': .3,
 				},
 				maxzoom: 22,
 			})

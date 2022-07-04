@@ -3,7 +3,7 @@
 set -eu
 
 INPUT=$1
-OUTPUT_DIR=$2
+OUT_DIR=$2
 SOURCE_LAYER_NAME=$3
 BASE_URL="https://kamataryo.github.io/vector-tiles-action"
 
@@ -14,12 +14,12 @@ tippecanoe -zg \
   --no-tile-compression \
   $INPUT
 
-mkdir -p $OUTPUT_DIR
-rmdir $OUTPUT_DIR
-mb-util --image_format=pbf ./${SOURCE_LAYER_NAME}.mbtiles $OUTPUT_DIR
-find $OUTPUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
+mkdir -p $OUT_DIR
+rmdir $OUT_DIR
+mb-util --image_format=pbf ./${SOURCE_LAYER_NAME}.mbtiles $OUT_DIR
+find $OUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 
-cat ./assets/index.html |  sed -e "s/%%source_layer_name%%/${SOURCE_LAYER_NAME}/g" > $OUTPUT_DIR/index.html
-cat $OUTPUT_DIR/metadata.json | \
+cat ./assets/index.html |  sed -e "s/%%layer_name%%/${SOURCE_LAYER_NAME}/g" > $OUT_DIR/index.html
+cat $OUT_DIR/metadata.json | \
   jq ".tiles |= [\"${BASE_URL}/{z}/{x}/{y}.mvt\"]" > \
-  $OUTPUT_DIR/tiles.json
+  $OUT_DIR/tiles.json

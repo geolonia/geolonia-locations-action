@@ -6,13 +6,11 @@ A GitHub Action to generate vector tiles.
 
 ```yaml
 - name: Generate vector tiles step
-  uses: ./
+  uses: geolonia/generate-vector-tiles@v0
   with:
-    input_files: ./assets/test.geojsons
-    output_dir: ./tiles
-    source_layer_name: test
+    sources: path/to/sources # shape, geojson, ndjgeojson and etc.
 
-# Optional. You can host tiles with GitHub Pages easily.
+# You can host tiles with GitHub Pages easily.
 - name: Deploy
   uses: JamesIves/github-pages-deploy-action@v4
   with:

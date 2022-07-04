@@ -1,23 +1,23 @@
 name: 'Generate Vector tiles'
 description: 'generate mbtiles with tippeacanoe'
 inputs:
-  input_files:
+  sources:
     description: 'Converting geometries'
     required: true
-  output_dir:
+  out_dir:
     description: '*.MVT output dir'
     required: false
     default: tiles
-  source_layer_name:
+  layer_name:
     description: 'mbtiles source layer name'
     required: false
-    default: out
+    default: data
 
 runs:
   using: docker
   image: Dockerfile
 
   args:
-    - ${{ inputs.input_files }}
-    - ${{ inputs.output_dir }}
-    - ${{ inputs.source_layer_name }}
+    - ${{ inputs.sources }}
+    - ${{ inputs.out_dir }}
+    - ${{ inputs.layer_name }}
