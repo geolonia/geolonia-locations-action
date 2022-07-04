@@ -12,7 +12,7 @@ jobs:
         uses: ./
         id: generate_vector_tile
         with:
-          input_files: ./test.geojsons
+          input_files: ./assets/test.geojsons
           output_dir: ./tiles
 
       - name: test

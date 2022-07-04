@@ -13,5 +13,5 @@ find $OUTPUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 cp ./assets/index.html $OUTPUT_DIR
 
 cat $OUTPUT_DIR/metadata.json | \
-  jq ".tiles |= [\"${BASE_URL}/{z}/{x}/{y}.mvt\"]" > \
+  jq ".tiles |= [\"${BASE_URL}/${OUTPUT_DIR}/{z}/{x}/{y}.mvt\"]" > \
   tiles.json
