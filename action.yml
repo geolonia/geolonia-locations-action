@@ -6,6 +6,7 @@ inputs:
     required: true
   output_dir:
     description: '*.MVT output dir'
+    required: true
 
 runs:
   using: 'docker'
