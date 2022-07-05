@@ -6,7 +6,7 @@ inputs:
     required: true
 
   no_tile_compression:
-    description: 'Don't compress the PBF vector tile data.'
+    description: 'Don\'t compress the PBF vector tile data.'
     required: false
     default: false
 
