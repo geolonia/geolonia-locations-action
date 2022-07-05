@@ -15,7 +15,7 @@ jobs:
           no_tile_compression: true
           output: ./aaa.mbtiles
           output_to_directory: ./docs/tiles
-          tippeacaboe_options: ['-zg', '--drop-densed-as-needed']
+          tippeacaboe_options: '-zg --drop-densed-as-needed'
 
       - name: test
         run: ls -la docs && ls -la docs/tiles
