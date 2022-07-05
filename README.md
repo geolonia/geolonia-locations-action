@@ -18,19 +18,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      ## Prepare vector data. For example, Shape, GeoJSON, GeoJSON in ndjson format, etc.
-      - name: Download Natural Earth data for test
-         run: |
-           curl -sL https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip > ne_10m_admin_0_countries.zip
-           unzip ne_10m_admin_0_countries.zip
-
       # Generate tiles 🚀
       - name: Generate vector tiles step
         uses: ./
         id: generate_vector_tiles
         with:
-          file: ./ne_10m_admin_0_countries.shp
-          no_tile_compression: true # If you host tiles on GitHub, plaese turn this option on.
+          file: path to your geometries
 
       - name: test
         run: ls -la tiles

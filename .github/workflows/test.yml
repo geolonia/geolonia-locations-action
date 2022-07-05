@@ -7,15 +7,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: Generate vector tiles step
+      - name: 'Generate vector tiles as *.mvt'
         uses: ./
         id: generate_vector_tiles
         with:
           file: ./path/to/geojsons
-          no_tile_compression: true
-          output: ./aaa.mbtiles
           output_to_directory: ./docs/tiles
-          tippeacaboe_options: '-zg --drop-densed-as-needed'
 
       - name: test
         run: ls -la docs && ls -la docs/tiles
