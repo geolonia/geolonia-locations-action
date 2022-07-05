@@ -7,17 +7,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: Download Natural Earth data for test
-        run: |
-          curl -sL https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip > ne_10m_admin_0_countries.zip
-          unzip ne_10m_admin_0_countries.zip
-
       - name: Generate vector tiles step
         uses: ./
         id: generate_vector_tiles
         with:
-          sources: ./ne_10m_admin_0_countries.shp
-          out_dir: ./docs/tiles
+          file: ./path/to/geojsons
+          no_tile_compression: true
+          output: ./aaa.mbtiles
+          output_to_directory: ./docs/tiles
+          tippeacaboe_options: ['-zg', '--drop-densed-as-needed']
 
       - name: test
         run: ls -la docs && ls -la docs/tiles

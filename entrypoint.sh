@@ -2,24 +2,36 @@
 
 set -eu
 
-INPUT=$1
-OUT_DIR=$2
-SOURCE_LAYER_NAME=$3
-BASE_URL="https://kamataryo.github.io/vector-tiles-action"
+FILE=$1
+NO_TILE_COMPRESSION=$2
+$OUTPUT=$3
+OUTPUT_TO_DIRECTORY=$4
+TIPPEACANOE_OPTIONS=$5
+
+echo $1
+echo $2
+echo $3
+echo $4
+echo $5
+
+
+if [ $TIPPEACANOE_OPTIONS != "" ];
+  tippecanoe $FILE
+fi
+
+NO_TILE_COMPRESSION_OPTION=""
+if [ $NO_TILE_COMPRESSION == 'true' ];
+  NO_TILE_COMPRESSION_OPTION="-no-tile-compression"
+fi
+
+mkdir -p $OUTPUT_TO_DIRECTORY
+rmdir $OUTPUT_TO_DIRECTORY
 
 tippecanoe -zg \
-  -o ${SOURCE_LAYER_NAME}.mbtiles \
+  -output $OUTPUT_TO_DIRECTORY \
   --drop-densest-as-needed \
-  -l $SOURCE_LAYER_NAME \
-  --no-tile-compression \
-  $INPUT
+  --layer $LAYER \
+  ${NO_TILE_COMPRESSION_OPTION} \
+  $FILE
 
-mkdir -p $OUT_DIR
-rmdir $OUT_DIR
-mb-util --image_format=pbf ./${SOURCE_LAYER_NAME}.mbtiles $OUT_DIR
-find $OUT_DIR -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
-
-cat ./assets/index.html |  sed -e "s/%%layer_name%%/${SOURCE_LAYER_NAME}/g" > $OUT_DIR/index.html
-cat $OUT_DIR/metadata.json | \
-  jq ".tiles |= [\"${BASE_URL}/{z}/{x}/{y}.mvt\"]" > \
-  $OUT_DIR/tiles.json
+find $OUTPUT_TO_DIRECTORY -name "*.pbf" -exec bash -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;

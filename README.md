@@ -29,7 +29,8 @@ jobs:
         uses: ./
         id: generate_vector_tiles
         with:
-          sources: ./ne_10m_admin_0_countries.shp
+          file: ./ne_10m_admin_0_countries.shp
+          no_tile_compression: true # If you host tiles on GitHub, plaese turn this option on.
 
       - name: test
         run: ls -la tiles
@@ -41,8 +42,3 @@ jobs:
           branch: 'gh-pages'
           folder: ./tiles
 ```
-
-## Configurations
-
-|key|description|type|required|default|
-|`sources`|Path to your vector data. |

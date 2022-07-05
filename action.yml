@@ -1,23 +1,37 @@
 name: 'Generate Vector tiles'
 description: 'generate mbtiles with tippeacanoe'
 inputs:
-  sources:
+  file:
     description: 'Converting geometries'
     required: true
-  out_dir:
-    description: '*.MVT output dir'
+
+  no_tile_compression:
+    description: 'Don't compress the PBF vector tile data.'
+    required: false
+    default: false
+
+  output:
+    description: 'Name the output mbtiles file.'
+    required: false
+    default: out.mbtiles
+
+  output_to_directory:
+    description: 'Write the new tiles to the specified directory.'
     required: false
     default: tiles
-  layer_name:
-    description: 'mbtiles source layer name'
+
+  tippeacanoe_options:
+    description: 'Overwrite all tippecanoe options.'
     required: false
-    default: data
+    default: ''  
 
 runs:
   using: docker
   image: Dockerfile
 
   args:
-    - ${{ inputs.sources }}
-    - ${{ inputs.out_dir }}
-    - ${{ inputs.layer_name }}
+    - ${{ inputs.file }}
+    - ${{ inputs.no_tile_compression }}
+    - ${{ inputs.output }}
+    - ${{ inputs.output_to_directory }}
+    - ${{ inputs.tippeacanoe_options }}
