@@ -23,14 +23,14 @@ jobs:
         uses: geolonia/vector-tiles-action@v1
         id: generate_vector_tiles
         with:
-          file: ./test/data.geojson         # data souce
-          output_to_directory: ./docs/tiles # [optional] tiles directory. default is `docs/tiles`.
-          layer: data                       # [optional] layer name. default is `data`.
+          file: ./test/data.geojson         # [Required] The data souce.
+          output_to_directory: ./docs/tiles # [Optional] The tiles directory. default is `docs/tiles`.
+          layer: data                       # [Optional] The layer name. default is `data`.
 
       - name: test
         run: ls -la docs/tiles
 
-      # You can host vector tiles by deploying them directly to GitHub Pages.
+      # You can host vector tiles by deploying them directly to GitHub Pages 🌏
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
