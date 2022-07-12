@@ -1,6 +1,6 @@
 {
-"name": "./docs/tiles",
-"description": "./docs/tiles",
+"name": "docs/tiles",
+"description": "docs/tiles",
 "version": "2",
 "minzoom": "0",
 "maxzoom": "0",
@@ -9,6 +9,6 @@
 "type": "overlay",
 "format": "pbf",
 "generator": "tippecanoe v1.36.0",
-"generator_options": "tippecanoe -zg --output-to-directory ./docs/tiles --layer data --drop-densest-as-needed --no-tile-compression ./test/data.geojson",
+"generator_options": "tippecanoe -zg --output-to-directory docs/tiles --layer data --drop-densest-as-needed --no-tile-compression ./test/data.geojson",
 "json": "{\"vector_layers\": [ { \"id\": \"data\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 0, \"fields\": {} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"data\",\"count\": 8,\"geometry\": \"Point\",\"attributeCount\": 0,\"attributes\": []}]}}"
 }
