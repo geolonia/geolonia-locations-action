@@ -19,19 +19,21 @@ jobs:
         uses: actions/checkout@v3
 
       # Generate tiles 🚀
-      - name: Generate vector tiles step
-        uses: ./
+      - name: 'Generate vector tiles as *.mvt'
+        uses: geolonia/vector-tiles-action@v1
         id: generate_vector_tiles
         with:
-          file: path to your geometries
+          file: ./test/data.geojson         # data souce
+          output_to_directory: ./docs/tiles # tiles directory
+          layer: data                       # layer name
 
       - name: test
-        run: ls -la tiles
+        run: ls -la docs/tiles
 
       # You can host vector tiles by deploying them directly to GitHub Pages.
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: 'gh-pages'
-          folder: ./tiles
+          folder: ./docs
 ```
