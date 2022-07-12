@@ -15,8 +15,6 @@ inputs:
     required: false
     default: ''  
 
-# TODO: set outputs with tile layer name and vector tile path
-
 runs:
   using: docker
   image: Dockerfile
