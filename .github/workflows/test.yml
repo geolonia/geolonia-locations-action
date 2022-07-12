@@ -11,7 +11,7 @@ jobs:
         uses: ./
         id: generate_vector_tiles
         with:
-          file: ./path/to/geojsons
+          file: ./test/data.geojson
           output_to_directory: ./docs/tiles
 
       - name: test
