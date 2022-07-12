@@ -10,6 +10,10 @@ inputs:
     required: false
     default: tiles
 
+  layer:
+    description: Use the specified layer name
+    required: true
+
   tippeacanoe_options:
     description: 'Overwrite all tippecanoe options.'
     required: false
@@ -22,4 +26,5 @@ runs:
   args:
     - ${{ inputs.file }}
     - ${{ inputs.output_to_directory }}
+    - ${{ inputs.layer }}
     - ${{ inputs.tippeacanoe_options }}

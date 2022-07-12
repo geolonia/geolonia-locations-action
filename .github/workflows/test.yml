@@ -13,6 +13,7 @@ jobs:
         with:
           file: ./test/data.geojson
           output_to_directory: ./docs/tiles
+          layer: data
 
       - name: test
         run: ls -la docs && ls -la docs/tiles
