@@ -24,8 +24,8 @@ jobs:
         id: generate_vector_tiles
         with:
           file: ./test/data.geojson         # data souce
-          output_to_directory: ./docs/tiles # tiles directory
-          layer: data                       # layer name
+          output_to_directory: ./docs/tiles # [optional] tiles directory. default is `docs/tiles`.
+          layer: data                       # [optional] layer name. default is `data`.
 
       - name: test
         run: ls -la docs/tiles
