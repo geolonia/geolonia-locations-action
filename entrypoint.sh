@@ -6,14 +6,12 @@ FILE=$1
 OUTPUT_TO_DIRECTORY=$2
 TIPPEACANOE_OPTIONS=$3
 
-echo $OUTPUT_TO_DIRECTORY
-
 if [ "$TIPPEACANOE_OPTIONS" == "" ]; then
   mkdir -p $OUTPUT_TO_DIRECTORY
   rmdir $OUTPUT_TO_DIRECTORY
 
   tippecanoe -zg \
-    -output $OUTPUT_TO_DIRECTORY \
+    --output-to-directory $OUTPUT_TO_DIRECTORY \
     --drop-densest-as-needed \
     --no-tile-compression \
     $FILE
