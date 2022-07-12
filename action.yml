@@ -2,17 +2,18 @@ name: 'Generate Vector tiles'
 description: 'generate mbtiles with tippeacanoe'
 inputs:
   file:
-    description: 'Converting geometries.'
+    description: 'Specify a geometry file.'
     required: true
 
   output_to_directory:
     description: 'Write the new tiles to the specified directory.'
     required: false
-    default: tiles
+    default: docs/tiles
 
   layer:
-    description: Use the specified layer name
-    required: true
+    description: 'Specify the layer name.'
+    required: false
+    default: data
 
   tippeacanoe_options:
     description: 'Overwrite all tippecanoe options.'
