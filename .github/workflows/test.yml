@@ -9,20 +9,18 @@ jobs:
 
       - name: 'case 1'
         uses: ./
-        id: generate_vector_tiles
         with:
           file: ./test/data.geojson
 
-      - name: test
+      - name: test 1
         run: ls -la docs && ls -la docs/tiles
 
       - name: 'case 2'
         uses: ./
-        id: generate_vector_tiles
         with:
-          tippeacanoe_options: "-z2 -Z2 -output test.mbtiles ./test/data.geojson"
+          tippeacanoe_options: '-z2 -Z2 -output test.mbtiles ./test/data.geojson'
 
-      - name: test
+      - name: test 2
         run: ls test.mbtiles
 
       - name: Deploy
