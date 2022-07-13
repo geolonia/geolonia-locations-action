@@ -7,7 +7,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: 'Generate vector tiles as *.mvt'
+      - name: 'case 1'
         uses: ./
         id: generate_vector_tiles
         with:
@@ -15,6 +15,15 @@ jobs:
 
       - name: test
         run: ls -la docs && ls -la docs/tiles
+
+      - name: 'case 2'
+        uses: ./
+        id: generate_vector_tiles
+        with:
+          tippeacanoe_options: "-z2 -Z2 -output test.mbtiles ./test/data.geojson"
+
+      - name: test
+        run: ls test.mbtiles
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4

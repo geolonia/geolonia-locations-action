@@ -23,9 +23,9 @@ jobs:
         uses: geolonia/vector-tiles-action@v0
         id: generate_vector_tiles
         with:
-          file: ./test/data.geojson         # [Required] The data source.
-          output_to_directory: ./docs/tiles # [Optional] The tiles directory. default is `docs/tiles`.
-          layer: data                       # [Optional] The layer name. default is `data`.
+          file: ./test/data.geojson         # [Required] Data source.
+          output_to_directory: ./docs/tiles # [Optional] Tiles directory. The default is `docs/tiles`.
+          layer: data                       # [Optional] Layer name. The default is `data`.
 
       - name: test
         run: ls -la docs/tiles
