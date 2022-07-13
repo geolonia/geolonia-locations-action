@@ -23,7 +23,7 @@ jobs:
         uses: geolonia/vector-tiles-action@v0
         id: generate_vector_tiles
         with:
-          file: ./test/data.geojson         # [Required] The data souce.
+          file: ./test/data.geojson         # [Required] The data source.
           output_to_directory: ./docs/tiles # [Optional] The tiles directory. default is `docs/tiles`.
           layer: data                       # [Optional] The layer name. default is `data`.
 
