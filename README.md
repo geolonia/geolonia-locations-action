@@ -20,7 +20,7 @@ jobs:
 
       # Generate tiles 🚀
       - name: 'Generate vector tiles as *.mvt'
-        uses: geolonia/vector-tiles-action@v1
+        uses: geolonia/vector-tiles-action@v0
         id: generate_vector_tiles
         with:
           file: ./test/data.geojson         # [Required] The data souce.
