@@ -1,8 +1,8 @@
-# Vector tiles action
+# Geolonia Locations Action
 
-[![.github/workflows/test.yml](https://github.com/geolonia/vector-tiles-action/actions/workflows/test.yml/badge.svg)](https://github.com/geolonia/vector-tiles-action/actions/workflows/test.yml)
+[![.github/workflows/test.yml](https://github.com/geolonia/geolonia-locations-action/actions/workflows/test.yml/badge.svg)](https://github.com/geolonia/geolonia-locations-action/actions/workflows/test.yml)
 
-A GitHub Action to generate vector tiles.
+A GitHub action for Geolonia Locations.
 
 ## Getting started
 
@@ -20,20 +20,15 @@ jobs:
 
       # Generate tiles 🚀
       - name: 'Generate vector tiles as *.mvt'
-        uses: geolonia/vector-tiles-action@v0
-        id: generate_vector_tiles
+        uses: geolonia/geolonia-locations-action@v0
         with:
-          file: ./test/data.geojson         # [Required] Data source.
-          output_to_directory: ./docs/tiles # [Optional] Tiles directory. The default is `docs/tiles`.
-          layer: data                       # [Optional] Layer name. The default is `data`.
+          file: ./test/data.shp # [Required] Data source.
+          out_dir: ./docs
+```
 
-      - name: test
-        run: ls -la docs/tiles
+## Development
 
-      # You can host vector tiles by deploying them directly to GitHub Pages 🌏
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: 'gh-pages'
-          folder: ./docs
+```shell
+$ docker build -t geolonia/geolonia-locations-action .
+$ docker run --rm -v $(pwd)/test:/test -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /test/data.geojson /docs
 ```

@@ -11,20 +11,3 @@ jobs:
         uses: ./
         with:
           file: ./test/data.geojson
-
-      - name: test 1
-        run: ls -la docs && ls -la docs/tiles
-
-      - name: 'case 2'
-        uses: ./
-        with:
-          tippeacanoe_options: '-z2 -Z2 -output test.mbtiles ./test/data.geojson'
-
-      - name: test 2
-        run: ls test.mbtiles
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: 'gh-pages'
-          folder: ./docs

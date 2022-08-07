@@ -6,20 +6,15 @@ inputs:
     description: 'Specify a geometry file.'
     required: true
 
-  output_to_directory:
-    description: 'Write the new tiles to the specified directory.'
+  out_dir:
+    description: 'Output directory.'
     required: false
-    default: docs/tiles
+    default: docs
 
-  layer:
-    description: 'Specify the layer name.'
+  geolonia_access_token:
+    description: 'Geolonia access token.'
     required: false
-    default: data
-
-  tippeacanoe_options:
-    description: 'Overwrite all tippecanoe options.'
-    required: false
-    default: ''  
+    default: ''
 
 runs:
   using: docker
@@ -27,6 +22,5 @@ runs:
 
   args:
     - ${{ inputs.file }}
-    - ${{ inputs.output_to_directory }}
-    - ${{ inputs.layer }}
-    - ${{ inputs.tippeacanoe_options }}
+    - ${{ inputs.out_dir }}
+    - ${{ inputs.geolonia_access_token }}

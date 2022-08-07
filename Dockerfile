@@ -13,5 +13,7 @@ RUN apt-get update && apt-get -y install \
   make -j && \
   make install
 
+RUN apt-get -y install gdal-bin
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
