@@ -10,4 +10,4 @@ jobs:
       - name: 'case 1'
         uses: ./
         with:
-          file: ./test/data.geojson
+          file: ./__test__/data.geojson
