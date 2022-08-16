@@ -22,9 +22,9 @@ jobs:
       - name: 'Generate vector tiles as *.mvt'
         uses: geolonia/geolonia-locations-action@v0
         with:
-          file: ./test/data.geojson           # [Required] Data source.
-          out_dir: ./docs                     # [Optional] Parent directory for tiles.
-          geolonia_access_token: 0a1b2c3d4e5f # [Optional] If specified, with.out_dir will be ignored and use Geolonia Location Service. If not with.out_dir will be respected and deploy to GitHub Pages. 
+          file: ./test/data.geojson           # [Required] Data source
+          out_dir: ./docs                     # [Optional] Parent directory where tiles are generated as `<out_dir>/tiles`
+          geolonia_access_token: 0a1b2c3d4e5f # [Optional] If specified, out_dir is ignored and Geolonia Loacations is used. Otherwise, out_dir is respected and deployed to GitHub Pages
 ```
 
 ## Development
