@@ -22,6 +22,4 @@ else
     $FILE
 
   find $TILES_OUT_DIR -name "*.pbf" -exec sh -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
-
-  # TODO: Upload to GitHub Pages
 fi
