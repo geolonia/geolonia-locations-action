@@ -13,5 +13,8 @@ RUN apt-get update && apt-get -y install \
   make -j && \
   make install
 
+# Install Geolonia
+RUN apt-get install -y nodejs npm && npm install -g @geolonia/cli@0.0.7
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

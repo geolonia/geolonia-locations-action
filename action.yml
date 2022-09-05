@@ -22,5 +22,5 @@ runs:
 
   args:
     - ${{ inputs.file }}
-    - ${{ inputs.out_dir }}
     - ${{ inputs.geolonia_access_token }}
+    - ${{ inputs.out_dir }}

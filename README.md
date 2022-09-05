@@ -13,7 +13,7 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    name: Generate vectior tiles and deploy GitHub Pages
+    name: Generate vector tiles and deploy GitHub Pages
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -24,12 +24,17 @@ jobs:
         with:
           file: ./test/data.geojson           # [Required] Data source
           out_dir: ./docs                     # [Optional] Parent directory where tiles are generated as `<out_dir>/tiles`
-          geolonia_access_token: 0a1b2c3d4e5f # [Optional] If specified, out_dir is ignored and Geolonia Loacations is used. Otherwise, out_dir is respected and deployed to GitHub Pages
+          geolonia_access_token: 0a1b2c3d4e5f # [Optional] If specified, out_dir is ignored and Geolonia Locations is used. Otherwise, out_dir is respected and deployed to GitHub Pages
 ```
+
+You can get Geolonia Access Token at https://app.geolonia.com/#/team/general.
 
 ## Development
 
 ```shell
 $ docker build -t geolonia/geolonia-locations-action .
-$ docker run --rm -v $(pwd)/__test__:/test -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /test/data.geojson
+# Use GitHub Pages, simply
+$ docker run --rm -v $(pwd)/__test__:/__test__ -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /__test__/data.geojson
+# Use Geolonia SaaS
+$ docker run --rm -v $(pwd)/__test__:/__test__ -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /__test__/data.geojson $GEOLONIA_ACCESS_TOKEN
 ```

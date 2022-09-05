@@ -2,8 +2,8 @@
 set -e
 
 FILE=$1
-OUT_DIR=$2
-GEOLONIA_ACCESS_TOKEN=$3
+GEOLONIA_ACCESS_TOKEN=$2
+OUT_DIR=$3
 
 TILES_OUT_DIR=$OUT_DIR/tiles
 LAYER_NAME=data
@@ -11,7 +11,7 @@ LAYER_NAME=data
 mkdir -p $TILES_OUT_DIR
 
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
-  echo 'geolonia locations upload "@$1"'
+  GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia locations upload $1
 else
   tippecanoe -zg \
     --force \
