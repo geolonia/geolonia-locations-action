@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y install \
 	zlib1g-dev && \
   git clone https://github.com/mapbox/tippecanoe.git && \
   cd tippecanoe && \
-  make -j && \
+  make -j2 && \
   make install
 
 # Install Geolonia
