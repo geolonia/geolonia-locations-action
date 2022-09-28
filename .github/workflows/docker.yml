@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - docker-image-publish
 
 env:
   REGISTRY: ghcr.io
