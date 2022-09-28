@@ -1,0 +1,26 @@
+name: 'Generate vector tiles'
+description: 'generate mbtiles with tippeacanoe'
+author: 'Geolonia'
+inputs:
+  file:
+    description: 'Specify a geometry file.'
+    required: true
+
+  out_dir:
+    description: 'Output directory.'
+    required: false
+    default: docs
+
+  geolonia_access_token:
+    description: 'Geolonia access token.'
+    required: false
+    default: ''
+
+runs:
+  using: docker
+  image: '../Dockerfile'
+
+  args:
+    - ${{ inputs.file }}
+    - ${{ inputs.geolonia_access_token }}
+    - ${{ inputs.out_dir }}

@@ -8,6 +8,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 'case 1'
-        uses: ./
+        uses: ./__test__
         with:
           file: ./__test__/data.geojson
