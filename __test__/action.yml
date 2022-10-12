@@ -26,4 +26,3 @@ runs:
     - ${{ inputs.out_dir }}
     - $GITHUB_REPOSITORY
     - ${GITHUB_REPOSITORY}
-    - ${{GITHUB_REPOSITORY}}
