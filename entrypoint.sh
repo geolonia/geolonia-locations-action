@@ -4,6 +4,7 @@ set -e
 FILE=$1
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
+echo "ああああああああああああああああ"
 echo $4
 
 TILES_OUT_DIR=$OUT_DIR/tiles
