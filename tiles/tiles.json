@@ -1,0 +1,15 @@
+{
+  "name": ".//tiles",
+  "version": "2",
+  "description": ".//tiles",
+  "type": "overlay",
+  "format": "pbf",
+  "attribution": null,
+  "minzoom": "0",
+  "maxzoom": "8",
+  "center": "139.757794,35.675195,8",
+  "bounds": "139.755734,35.673766,139.757794,35.675195",
+  "tiles": [
+    "https://tileserver.geolonia.com/v2_combined2/tiles/{z}/{x}/{y}.pbf?v=djJfY29tYmluZWQyfHYyX2NvbWJpbmVkMl8yMDIyLTEwLTA0I9sSK8gmB4YZY9FjdeTguwna0c_wefUUmZkMWccvf0-C&key=YOUR-API-KEY"
+  ]
+}
