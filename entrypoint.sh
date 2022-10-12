@@ -7,7 +7,7 @@ OUT_DIR=$3
 
 GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
 TILES_OUT_DIR=$OUT_DIR/tiles
-METADATA_JSON_DIR=$TILES_OUT_DIR/metadata.json
+METADATA_JSON=$TILES_OUT_DIR/metadata.json
 LAYER_NAME=data
 
 mkdir -p $TILES_OUT_DIR
@@ -25,10 +25,11 @@ else
 
   find $TILES_OUT_DIR -name "*.pbf" -exec sh -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 
-  if [ -f $METADATA_JSON_DIR ]
+  if [ -f $METADATA_JSON ]
   then
   
-    cat $METADATA_JSON_DIR | jq '{
+    cat $METADATA_JSON | jq '{
+      "tilejson": "3.0.0",
       name: .name,
       version: .version,
       description: .description,

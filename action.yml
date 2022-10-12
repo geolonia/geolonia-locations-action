@@ -18,7 +18,7 @@ inputs:
 
 runs:
   using: docker
-  image: 'docker://ghcr.io/geolonia/geolonia-locations-action:main'
+  image: './Dockerfile'
 
   args:
     - ${{ inputs.file }}
