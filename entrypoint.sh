@@ -4,12 +4,13 @@ set -e
 FILE=$1
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
-echo "ああああああああああああああああ"
-echo $4
-echo $5
-echo $6
-echo $GITHUB_REPOSITORY
-echo ${GITHUB_REPOSITORY}
+
+ARR=(${$GITHUB_REPOSITORY//\// })
+GH_USER_NAME=${ARR[0]}
+GH_REPOSITORY_NAME=${ARR[1]}
+
+echo $GH_USER_NAME
+echo $GH_REPOSITORY_NAME
 
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON_DIR=$TILES_OUT_DIR/metadata.json
@@ -46,7 +47,7 @@ else
       center: .center,
       bounds: .bounds,
       "tiles": [
-        "https://YOUR-GITHUB-USER.github.io/vector-tiles-api/tiles/{z}/{x}/{y}.mvt"
+        "https://'${GH_USER_NAME}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
       ]
     }' > $TILES_OUT_DIR/tiles.json
 
