@@ -24,4 +24,6 @@ runs:
     - ${{ inputs.file }}
     - ${{ inputs.geolonia_access_token }}
     - ${{ inputs.out_dir }}
-    - "HELLOOOOOO"
+    - $GITHUB_REPOSITORY
+    - ${GITHUB_REPOSITORY}
+    - ${{GITHUB_REPOSITORY}}

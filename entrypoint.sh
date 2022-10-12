@@ -6,6 +6,8 @@ GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 echo "ああああああああああああああああ"
 echo $4
+echo $5
+echo $6
 
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON_DIR=$TILES_OUT_DIR/metadata.json
