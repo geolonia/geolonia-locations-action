@@ -5,9 +5,7 @@ FILE=$1
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 
-ARR=(${$GITHUB_REPOSITORY//\// })
-GH_USER_NAME=${ARR[0]}
-GH_REPOSITORY_NAME=${ARR[1]}
+REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
 
 echo $GH_USER_NAME
 echo $GH_REPOSITORY_NAME
@@ -47,7 +45,7 @@ else
       center: .center,
       bounds: .bounds,
       "tiles": [
-        "https://'${GH_USER_NAME}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
+        "https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
       ]
     }' > $TILES_OUT_DIR/tiles.json
 
