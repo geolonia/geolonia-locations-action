@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 'Generate vector tiles as *.mvt'
-        uses: ./
+        uses: ./__test__/
         id: generate_vector_tiles
         with:
           file: ./example.geojson
