@@ -8,6 +8,8 @@ echo "ああああああああああああああああ"
 echo $4
 echo $5
 echo $6
+echo $GITHUB_REPOSITORY
+echo ${GITHUB_REPOSITORY}
 
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON_DIR=$TILES_OUT_DIR/metadata.json
