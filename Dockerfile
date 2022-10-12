@@ -11,6 +11,7 @@ RUN apt-get update && apt-get -y install \
 		zlib1g-dev \
 		nodejs \
 		npm \
+		jq \
 	&& \
 	mkdir -p /tmp/build && cd /tmp/build && \
   git clone https://github.com/mapbox/tippecanoe.git && \
