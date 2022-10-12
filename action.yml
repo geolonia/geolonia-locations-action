@@ -21,7 +21,6 @@ runs:
   image: 'docker://ghcr.io/geolonia/geolonia-locations-action:main'
 
   args:
-    - "GITHUB_REPOSITORY"
-    - "GITHUB_REPOSITORY"
-    - "GITHUB_REPOSITORY"
-    - "GITHUB_REPOSITORY"
+    - ${{ inputs.file }}
+    - ${{ inputs.geolonia_access_token }}
+    - ${{ inputs.out_dir }}
