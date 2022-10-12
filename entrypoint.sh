@@ -5,10 +5,6 @@ FILE=$1
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 
-echo $1
-echo $2
-echo $3
-
 GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON_DIR=$TILES_OUT_DIR/metadata.json
