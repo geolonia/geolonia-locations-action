@@ -1,0 +1,22 @@
+on: [push]
+jobs:
+  generate_tile_job:
+    runs-on: ubuntu-latest
+    name: A job to generate vector tiles
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: 'Generate vector tiles as *.mvt'
+        uses: ./
+        id: generate_vector_tiles
+        with:
+          file: ./example.geojson
+          output_to_directory: ./tiles
+          layer: g-simplestyle-v1
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: 'gh-pages'
+          folder: ./
