@@ -8,7 +8,7 @@ OUT_DIR=$3
 GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON=$TILES_OUT_DIR/metadata.json
-LAYER_NAME=data
+LAYER_NAME=g-simplestyle-v1
 
 mkdir -p $TILES_OUT_DIR
 
