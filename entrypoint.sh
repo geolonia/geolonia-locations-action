@@ -15,7 +15,16 @@ mkdir -p $TILES_OUT_DIR
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia locations upload $1
 else
-  tippecanoe -zg \
+
+  TILE_MAXZOOM_OPTION=""
+  
+  if [ $(cat $FILE | jq '.features | map(select(.geometry.type == "Point")) | length') -eq $(cat $FILE | jq '.features | length') ]; then
+    TILE_MAXZOOM_OPTION="-z8"
+  else
+    TILE_MAXZOOM_OPTION="-zg"
+  fi
+
+  tippecanoe $TILE_MAXZOOM_OPTION \
     --force \
     --output-to-directory $TILES_OUT_DIR \
     --layer $LAYER_NAME \
