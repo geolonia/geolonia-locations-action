@@ -27,19 +27,19 @@ else
 
   if [ -f $METADATA_JSON ]
   then
-  
+
     cat $METADATA_JSON | jq '{
       "tilejson": "3.0.0",
       name: .name,
       version: .version,
       description: .description,
       type: .type,
-      format: .format,
+      format: "mvt",
       attribution: .attribution,
-      minzoom: .minzoom,
-      maxzoom: .maxzoom,
-      center: .center,
-      bounds: .bounds,
+      minzoom: .minzoom | tonumber,
+      maxzoom: .maxzoom | tonumber,
+      center: .center | split(",") | map(tonumber),
+      bounds: .bounds | split(",") | map(tonumber),
       "tiles": [
         "https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
       ]
