@@ -28,11 +28,6 @@ else
   if [ -f $METADATA_JSON ]
   then
 
-    minzoom=$(cat $METADATA_JSON | jq -r '.minzoom' )
-    maxzoom=$(cat $METADATA_JSON | jq -r '.maxzoom' )
-    center=$(cat $METADATA_JSON | jq -r '.center' )
-    bounds=$(cat $METADATA_JSON | jq -r '.bounds' )
-
     cat $METADATA_JSON | jq '{
       "tilejson": "3.0.0",
       name: .name,
@@ -41,10 +36,10 @@ else
       type: .type,
       format: "mvt",
       attribution: .attribution,
-      minzoom: '${minzoom}',
-      maxzoom: '${maxzoom}',
-      center: ['${center}'],
-      bounds: ['${bounds}'],
+      minzoom: .minzoom | tonumber,
+      maxzoom: .maxzoom | tonumber,
+      center: .center | split(",") | map(tonumber),
+      bounds: .bounds | split(",") | map(tonumber),
       "tiles": [
         "https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
       ]
