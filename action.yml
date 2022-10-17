@@ -16,6 +16,11 @@ inputs:
     required: false
     default: ''
 
+  layer:
+    description: 'Specify layer name.'
+    required: false
+    default: g-simplestyle-v1
+
 runs:
   using: docker
   image: 'docker://ghcr.io/geolonia/geolonia-locations-action:main'
@@ -24,3 +29,4 @@ runs:
     - ${{ inputs.file }}
     - ${{ inputs.geolonia_access_token }}
     - ${{ inputs.out_dir }}
+    - ${{ inputs.layer }}
