@@ -11,3 +11,8 @@ jobs:
         uses: ./__test__
         with:
           file: ./__test__/data.geojson
+
+      - name: 'case 2'
+        uses: ./__test__
+        with:
+          file: ./__test__/point.geojson

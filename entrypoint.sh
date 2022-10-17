@@ -17,11 +17,15 @@ if [ $GEOLONIA_ACCESS_TOKEN ]; then
 else
 
   TILE_MAXZOOM_OPTION=""
-  
-  if [ $(cat $FILE | jq '.features | map(select(.geometry.type == "Point")) | length') -eq $(cat $FILE | jq '.features | length') ]; then
-    TILE_MAXZOOM_OPTION="-z8"
-  else
-    TILE_MAXZOOM_OPTION="-zg"
+
+  # if geojson has one feature and geometry type is Point, set maxzoom to 14
+
+  if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
+    if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
+      TILE_MAXZOOM_OPTION="-z8"
+      else
+      TILE_MAXZOOM_OPTION="-zg"
+    fi
   fi
 
   tippecanoe $TILE_MAXZOOM_OPTION \
