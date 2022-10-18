@@ -34,7 +34,7 @@ You can get Geolonia Access Token at https://app.geolonia.com/#/team/general.
 ```shell
 $ docker build -t geolonia/geolonia-locations-action .
 # Use GitHub Pages, simply
-$ docker run --rm -v $(pwd)/__test__:/__test__ -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /__test__/data.geojson
+$ docker run --rm -v $(pwd)/__test__:/__test__ -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /__test__/data.geojson "" ./docs g-simplestyle-v1
 # Use Geolonia SaaS
 $ docker run --rm -v $(pwd)/__test__:/__test__ -v $(pwd)/docs:/docs geolonia/geolonia-locations-action /__test__/data.geojson $GEOLONIA_ACCESS_TOKEN
 ```
