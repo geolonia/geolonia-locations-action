@@ -25,5 +25,8 @@ RUN apt-get update && apt-get -y install \
 	apt-get autoremove -y && \
 	rm -rf /var/lib/apt/lists/*
 
+# Install csv2geojson
+RUN npm install -g csv2geojson
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
