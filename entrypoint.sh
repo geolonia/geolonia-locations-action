@@ -2,6 +2,10 @@
 set -e
 
 FILE=$1
+EXT=${FILE##*.}
+FILE_WITHOUT_EXT=${FILE%.*}
+LOWER_EXT=`echo $EXT | tr '[:upper:]' '[:lower:]'`
+
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 LAYER_NAME=$4
@@ -11,6 +15,12 @@ TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON=$TILES_OUT_DIR/metadata.json
 
 mkdir -p $TILES_OUT_DIR
+
+if [ "$LOWER_EXT" = "csv" ]; then
+  echo "Converting CSV to GeoJSON..."
+  csv2geojson --lat 緯度 --lon 経度 $FILE > $FILE_WITHOUT_EXT.geojson
+  FILE=$FILE_WITHOUT_EXT.geojson
+fi
 
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia locations upload $1
