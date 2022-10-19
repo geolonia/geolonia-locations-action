@@ -13,7 +13,7 @@ METADATA_JSON=$TILES_OUT_DIR/metadata.json
 mkdir -p $TILES_OUT_DIR
 
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
-  GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia locations upload $1
+  GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
   tippecanoe -zg \
     --force \
