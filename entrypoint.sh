@@ -22,7 +22,7 @@ else
 
   if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
     if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
-      TILE_MAXZOOM_OPTION="-z8"
+      TILE_MAXZOOM_OPTION="-z14"
       else
       TILE_MAXZOOM_OPTION="-zg"
     fi
