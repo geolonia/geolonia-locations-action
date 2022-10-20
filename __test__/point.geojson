@@ -1,0 +1,22 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "集合場所",
+        "description": "ここが集合場所です。13時までに集合してください。",
+        "marker-color": "#0096ff",
+        "marker-size": "medium",
+        "marker-symbol": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.75642561912537,
+          35.673569928415574
+        ]
+      }
+    }
+  ]
+}
