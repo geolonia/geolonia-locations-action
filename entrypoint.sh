@@ -10,7 +10,14 @@ GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 LAYER_NAME=$4
 
-GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+BASE_URL=""
+if [ $GITHUB_REPOSITORY ]; then
+  GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
+  BASE_URL="https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'"
+  else
+  BASE_URL="http://localhost:8080"
+fi
+
 TILES_OUT_DIR=$OUT_DIR/tiles
 METADATA_JSON=$TILES_OUT_DIR/metadata.json
 
@@ -64,7 +71,7 @@ else
       center: .center | split(",") | map(tonumber),
       bounds: .bounds | split(",") | map(tonumber),
       "tiles": [
-        "https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'/tiles/{z}/{x}/{y}.mvt"
+        "'${BASE_URL}'/tiles/{z}/{x}/{y}.mvt"
       ]
     }' > $TILES_OUT_DIR/tiles.json
 
