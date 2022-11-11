@@ -33,10 +33,73 @@ if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
 
+  # if coordinates value is stirng, convert to number
+  if [ "$LOWER_EXT" = "geojson" ]; then
+    echo "Converting GeoJSON"
+
+    FEATURES=$(cat $FILE | jq '.features')
+
+    for i in $(seq 0 $(echo $FEATURES | jq length)); do
+      FEATURE=$(echo $FEATURES | jq ".[$i]")
+      if [ "$FEATURE" = "null" ]; then
+        continue
+      fi
+
+      # if geometry is Point
+      if [ $(echo $FEATURE | jq '.geometry.type') = '"Point"' ]; then
+        COORDINATES=$(echo $FEATURE | jq '.geometry.coordinates')
+        COORDINATES=$(echo $COORDINATES | jq 'map(tonumber)')
+      fi
+
+      # if geometry is LineString
+      if [ $(echo $FEATURE | jq '.geometry.type') = '"LineString"' ]; then
+        COORDINATES=$(echo $FEATURE | jq '.geometry.coordinates')
+        for j in $(seq 0 $(echo $COORDINATES | jq length)); do
+          COORDINATES_CHILD=$(echo $COORDINATES | jq ".[$j]")
+          if [ "$COORDINATES_CHILD" = "null" ]; then
+            continue
+          fi
+          COORDINATES_CHILD=$(echo $COORDINATES_CHILD | jq 'map(tonumber)')
+          COORDINATES=$(echo $COORDINATES | jq ".[$j] = $COORDINATES_CHILD")
+        done
+      fi
+
+      # if geometry is Polygon
+      if [ $(echo $FEATURE | jq '.geometry.type') = '"Polygon"' ]; then
+        COORDINATES=$(echo $FEATURE | jq '.geometry.coordinates')
+        for j in $(seq 0 $(echo $COORDINATES | jq length)); do
+          COORDINATES_CHILD=$(echo $COORDINATES | jq ".[$j]")
+          if [ "$COORDINATES_CHILD" = "null" ]; then
+            continue
+          fi
+          for k in $(seq 0 $(echo $COORDINATES_CHILD | jq length)); do
+            COORDINATES_GRANDCHILD=$(echo $COORDINATES_CHILD | jq ".[$k]")
+            if [ "$COORDINATES_GRANDCHILD" = "null" ]; then
+              continue
+            fi
+            COORDINATES_GRANDCHILD=$(echo $COORDINATES_GRANDCHILD | jq 'map(tonumber)')
+            COORDINATES_CHILD=$(echo $COORDINATES_CHILD | jq ".[$k] = $COORDINATES_GRANDCHILD")
+          done
+          COORDINATES=$(echo $COORDINATES | jq ".[$j] = $COORDINATES_CHILD")
+        done
+      fi
+
+      # replace coordinates
+      FEATURE=$(echo $FEATURE | jq ".geometry.coordinates = $COORDINATES")
+
+      # replace feature
+      FEATURES=$(echo $FEATURES | jq ".[$i] = $FEATURE")
+
+    done
+
+    GEOJSON=$(echo $FEATURES | jq ". | {type: \"FeatureCollection\", features: .}")
+
+  fi
+
+
   TILE_MAXZOOM_OPTION=""
 
   # if geojson has one feature and geometry type is Point, set maxzoom to 14
-
   if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
     if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
       TILE_MAXZOOM_OPTION="-z14"
