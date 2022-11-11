@@ -49,6 +49,11 @@ else
       if [ $(echo $FEATURE | jq '.geometry.type') = '"Point"' ]; then
         COORDINATES=$(echo $FEATURE | jq '.geometry.coordinates')
         COORDINATES=$(echo $COORDINATES | jq 'map(tonumber)')
+
+        # if coordinates value is more than 2, create arraw with first tow values
+        if [ $(echo $COORDINATES | jq length) -gt 2 ]; then
+          COORDINATES=$(echo $COORDINATES | jq '.[0:2]')
+        fi
       fi
 
       # if geometry is LineString
@@ -61,6 +66,11 @@ else
           fi
           COORDINATES_CHILD=$(echo $COORDINATES_CHILD | jq 'map(tonumber)')
           COORDINATES=$(echo $COORDINATES | jq ".[$j] = $COORDINATES_CHILD")
+
+          # if coordinates value is more than 2, create arraw with first tow values
+          if [ $(echo $COORDINATES | jq length) -gt 2 ]; then
+            COORDINATES=$(echo $COORDINATES | jq '.[0:2]')
+          fi
         done
       fi
 
@@ -81,6 +91,11 @@ else
             COORDINATES_CHILD=$(echo $COORDINATES_CHILD | jq ".[$k] = $COORDINATES_GRANDCHILD")
           done
           COORDINATES=$(echo $COORDINATES | jq ".[$j] = $COORDINATES_CHILD")
+
+          # if coordinates value is more than 2, create arraw with first tow values
+          if [ $(echo $COORDINATES | jq length) -gt 2 ]; then
+            COORDINATES=$(echo $COORDINATES | jq '.[0:2]')
+          fi
         done
       fi
 
