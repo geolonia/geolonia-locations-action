@@ -108,6 +108,7 @@ else
     done
 
     GEOJSON=$(echo $FEATURES | jq ". | {type: \"FeatureCollection\", features: .}")
+    echo $GEOJSON > $FILE
 
   fi
 
