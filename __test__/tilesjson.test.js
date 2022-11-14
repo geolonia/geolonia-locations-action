@@ -1,11 +1,15 @@
-// read ./docs/tiles/tiles.json file
-
 const fs = require('fs');
+const { default: test } = require('node:test');
 const path = require('path');
-const tilesjson = require('../docs/tiles/tiles.json');
+const tilesJson = fs.readFileSync(path.join(__dirname, '../', 'docs/tiles/tiles.json'))
 
-test('tilesjson', () => {
-  expect(tilesjson).not.toBe(null);
-  expect(tilesjson).not.toBe(undefined);
-  expect(tilesjson).not.toBe('');
+test('is tiles.json exist', () => {
+  expect(tilesJson).not.toBe(null);
+  expect(tilesJson).not.toBe(undefined);
+  expect(tilesJson).not.toBe('');
+})
+
+test('is tile url valid', () => {
+  const tiles = JSON.parse(tilesJson);
+  expect(tiles.tiles[0]).toBe('https://geolonia.github.io/geolonia-locations-action/tiles/tiles.json');
 })
