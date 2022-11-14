@@ -10,5 +10,5 @@ test('is tiles.json exist', () => {
 
 test('is tile url valid', () => {
   const tiles = JSON.parse(tilesJson);
-  expect(tiles.tiles[0]).toBe('https://geolonia.github.io/geolonia-locations-action/tiles/tiles.json');
+  expect(tiles.tiles[0]).toBe('https://geolonia.github.io/geolonia-locations-action/tiles/{z}/{x}/{y}.mvt');
 })
