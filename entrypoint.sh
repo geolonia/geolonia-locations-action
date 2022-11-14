@@ -29,6 +29,9 @@ if [ "$LOWER_EXT" = "csv" ]; then
   FILE=$FILE_WITHOUT_EXT.geojson
 fi
 
+# convert coordinates value type string to number
+FILE=$(node ./bin/convertToNumber.js $FILE)
+
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
