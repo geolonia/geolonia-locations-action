@@ -13,7 +13,7 @@ LAYER_NAME=$4
 BASE_URL=""
 if [ $GITHUB_REPOSITORY ]; then
   GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-  BASE_URL="https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'"
+  BASE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GH_REPOSITORY_NAME}"
   else
   BASE_URL="http://localhost:8080"
 fi
