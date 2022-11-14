@@ -36,7 +36,6 @@ else
   TILE_MAXZOOM_OPTION=""
 
   # if geojson has one feature and geometry type is Point, set maxzoom to 14
-
   if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
     if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
       TILE_MAXZOOM_OPTION="-z14"
