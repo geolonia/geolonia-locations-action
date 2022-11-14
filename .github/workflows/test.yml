@@ -20,4 +20,4 @@ jobs:
       - name: 'tiles.json should be generated'
         run: |
           npm install -g jest
-          jest
+          jest --config=./__test__/jest.config.js
