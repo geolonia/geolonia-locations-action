@@ -17,7 +17,12 @@ jobs:
         with:
           file: ./__test__/point.geojson
 
-      - name: 'case 3: coordinates value is string'
+      - name: 'case 3 - coordinates value is string'
         uses: ./__test__
         with:
           file: ./__test__/coordinates-string.geojson
+
+      - name: 'case 4 - convert csv'
+        uses: ./__test__
+        with:
+          file: ./__test__/point.csv
