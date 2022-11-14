@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { default: test } = require('node:test');
 const path = require('path');
 const tilesJson = fs.readFileSync(path.join(__dirname, '../', 'docs/tiles/tiles.json'))
 
