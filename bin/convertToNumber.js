@@ -30,7 +30,8 @@ const formatCoordinates = (filePath) => {
   }
 
   fs.writeFileSync(targetFile , JSON.stringify(newGeojson))
-  return targetFile
+
+  process.stdout.write(targetFile);
 }
 
 // pass first argument as file path
