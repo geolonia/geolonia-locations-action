@@ -27,7 +27,7 @@ jobs:
         with:
           file: ./__test__/point.csv
 
-      - name: 'case 4 - csv coordinates values are string'
+      - name: 'case 5 - csv coordinates values are string'
         uses: ./__test__
         with:
-          file: ./__test__coordinates-string.csv
+          file: ./__test__/coordinates-string.csv
