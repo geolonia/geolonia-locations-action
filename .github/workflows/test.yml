@@ -16,3 +16,8 @@ jobs:
         uses: ./__test__
         with:
           file: ./__test__/point.geojson
+
+      - name: 'tiles.json should be generated'
+        run: |
+          npm install -g jest
+          jest --config=./__test__/jest.config.js
