@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs')
-const path = require('path')
 const filePath = process.argv[2]
-const targetFile = path.join(__dirname, '../', 'temp.geojson')
 
 const convertToNumber = (coordinates) => {
   if (Array.isArray(coordinates)) {
@@ -29,10 +27,8 @@ const formatCoordinates = (filePath) => {
     features: features
   }
 
-  fs.writeFileSync(targetFile , JSON.stringify(newGeojson))
+  fs.writeFileSync(filePath , JSON.stringify(newGeojson))
 
-  process.stdout.write(targetFile);
 }
 
-// pass first argument as file path
 formatCoordinates(filePath)
