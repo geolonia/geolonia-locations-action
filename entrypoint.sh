@@ -38,7 +38,13 @@ else
 
   if [ "$TIPPECANOE_OPTIONS" ]; then
 
-    eval "tippecanoe $TIPPECANOE_OPTIONS --force --output-to-directory $TILES_OUT_DIR --layer $LAYER_NAME --no-tile-compression $FILE"
+    tippecanoe $TIPPECANOE_OPTIONS \
+      --force \
+      --output-to-directory $TILES_OUT_DIR \
+      --layer $LAYER_NAME \
+      --no-tile-compression \
+      $FILE
+      
   else
   
     tippecanoe -z18 \
