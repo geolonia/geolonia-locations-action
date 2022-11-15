@@ -25,7 +25,6 @@ mkdir -p $TILES_OUT_DIR
 
 if [ "$LOWER_EXT" = "csv" ]; then
   echo "Converting CSV to GeoJSON..."
-
   csv2geojson --lat 緯度 --lon 経度 $FILE > $FILE_WITHOUT_EXT.geojson
   FILE=$FILE_WITHOUT_EXT.geojson
 fi
