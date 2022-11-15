@@ -9,6 +9,7 @@ LOWER_EXT=`echo $EXT | tr '[:upper:]' '[:lower:]'`
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 LAYER_NAME=$4
+TP_OPTIONS=$5
 
 BASE_URL=""
 if [ $GITHUB_REPOSITORY ]; then

@@ -21,6 +21,10 @@ inputs:
     required: false
     default: g-simplestyle-v1
 
+  tp_options:
+    description: 'Specify tippecanoe options.'
+    required: false
+
 runs:
   using: docker
   image: 'docker://ghcr.io/geolonia/geolonia-locations-action:main'
@@ -30,3 +34,4 @@ runs:
     - ${{ inputs.geolonia_access_token }}
     - ${{ inputs.out_dir }}
     - ${{ inputs.layer }}
+    - ${{ inputs.tp_options }}
