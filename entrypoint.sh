@@ -25,6 +25,10 @@ mkdir -p $TILES_OUT_DIR
 
 if [ "$LOWER_EXT" = "csv" ]; then
   echo "Converting CSV to GeoJSON..."
+
+  # remove single, double quotes
+  sed -i -e "s/['\"]//g" $FILE
+
   csv2geojson --lat 緯度 --lon 経度 $FILE > $FILE_WITHOUT_EXT.geojson
   FILE=$FILE_WITHOUT_EXT.geojson
 fi
