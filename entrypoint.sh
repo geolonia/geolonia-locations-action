@@ -39,7 +39,7 @@ else
   if [ $TP_OPTIONS ]; then
     tippecanoe $TP_OPTIONS
   else
-    tippecanoe $TILE_MAXZOOM_OPTION \
+    tippecanoe -z18 \
       --force \
       --output-to-directory $TILES_OUT_DIR \
       --layer $LAYER_NAME \
