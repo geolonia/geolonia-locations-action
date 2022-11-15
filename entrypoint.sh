@@ -36,9 +36,11 @@ else
   
   echo "Converting GeoJSON to MBTiles..."
 
-  if [ $TP_OPTIONS ]; then
-    tippecanoe $TP_OPTIONS
+  if [ "$TP_OPTIONS" ]; then
+
+    eval "tippecanoe $TP_OPTIONS"
   else
+  
     tippecanoe -z18 \
       --force \
       --output-to-directory $TILES_OUT_DIR \
