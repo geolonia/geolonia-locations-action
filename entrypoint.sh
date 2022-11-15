@@ -33,19 +33,7 @@ if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
 
-  TILE_MAXZOOM_OPTION=""
-
-  # if geojson has one feature and geometry type is Point, set maxzoom to 14
-
-  if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
-    if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
-      TILE_MAXZOOM_OPTION="-z14"
-      else
-      TILE_MAXZOOM_OPTION="-zg"
-    fi
-  fi
-
-  tippecanoe $TILE_MAXZOOM_OPTION \
+  tippecanoe -z18 \
     --force \
     --output-to-directory $TILES_OUT_DIR \
     --layer $LAYER_NAME \
