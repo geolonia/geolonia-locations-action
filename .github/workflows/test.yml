@@ -20,4 +20,7 @@ jobs:
       - name: 'case 3 - with tippecanoe options'
         uses: ./__test__
         with:
-          tp_options: "-z20 --force --output-to-directory docs/tiles --layer test-layer --drop-densest-as-needed --no-tile-compression ./__test__/point.geojson"
+          file: ./__test__/point.geojson
+          out_dir: docs/tiles
+          layer: test-layers
+          tippecanoe_options: "-z20"

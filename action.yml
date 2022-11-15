@@ -21,7 +21,7 @@ inputs:
     required: false
     default: g-simplestyle-v1
 
-  tp_options:
+  tippecanoe_options:
     description: 'Specify tippecanoe options.'
     required: false
 
@@ -34,4 +34,4 @@ runs:
     - ${{ inputs.geolonia_access_token }}
     - ${{ inputs.out_dir }}
     - ${{ inputs.layer }}
-    - ${{ inputs.tp_options }}
+    - ${{ inputs.tippecanoe_options }}
