@@ -31,6 +31,6 @@ RUN npm install -g csv2geojson
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 744 /entrypoint.sh
 
-COPY bin/convertToNumber.js /bin/convertToNumber.js
+COPY bin/convertToNumber.js /convertToNumber.js
 
 ENTRYPOINT ["/entrypoint.sh"]
