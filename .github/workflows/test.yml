@@ -33,4 +33,4 @@ jobs:
           file: ./__test__/point.geojson
           out_dir: docs/tiles
           layer: test-layers
-          tippecanoe_options: "-z20"
+          tippecanoe_options: "-Z10 -z20"

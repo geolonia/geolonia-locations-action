@@ -40,7 +40,7 @@ else
   echo "Converting GeoJSON to MBTiles..."
 
   if [ "$TIPPECANOE_OPTIONS" ]; then
-
+    echo "Using tippecanoe with extra options: $TIPPECANOE_OPTIONS"
     tippecanoe $TIPPECANOE_OPTIONS \
       --force \
       --output-to-directory $TILES_OUT_DIR \
