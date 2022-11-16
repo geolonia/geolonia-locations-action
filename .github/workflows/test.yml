@@ -26,3 +26,11 @@ jobs:
         uses: ./__test__
         with:
           file: ./__test__/point.csv
+
+      - name: 'case 5 - with tippecanoe options'
+        uses: ./__test__
+        with:
+          file: ./__test__/point.geojson
+          out_dir: docs/tiles
+          layer: test-layers
+          tippecanoe_options: "-z20"

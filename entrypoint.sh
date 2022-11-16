@@ -9,11 +9,12 @@ LOWER_EXT=`echo $EXT | tr '[:upper:]' '[:lower:]'`
 GEOLONIA_ACCESS_TOKEN=$2
 OUT_DIR=$3
 LAYER_NAME=$4
+TIPPECANOE_OPTIONS=$5
 
 BASE_URL=""
 if [ $GITHUB_REPOSITORY ]; then
   GH_REPOSITORY_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-  BASE_URL="https://'${GITHUB_REPOSITORY_OWNER}'.github.io/'${GH_REPOSITORY_NAME}'"
+  BASE_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GH_REPOSITORY_NAME}"
   else
   BASE_URL="http://localhost:8080"
 fi
@@ -35,25 +36,28 @@ node ./bin/convertToNumber.js $FILE
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
+  
+  echo "Converting GeoJSON to MBTiles..."
 
-  TILE_MAXZOOM_OPTION=""
+  if [ "$TIPPECANOE_OPTIONS" ]; then
 
-  # if geojson has one feature and geometry type is Point, set maxzoom to 14
-  if [ $(cat $FILE | jq '.features | length') -eq 1 ]; then
-    if [ $(cat $FILE | jq '.features[0].geometry.type') = '"Point"' ]; then
-      TILE_MAXZOOM_OPTION="-z14"
-      else
-      TILE_MAXZOOM_OPTION="-zg"
-    fi
+    tippecanoe $TIPPECANOE_OPTIONS \
+      --force \
+      --output-to-directory $TILES_OUT_DIR \
+      --layer $LAYER_NAME \
+      --no-tile-compression \
+      $FILE
+      
+  else
+  
+    tippecanoe -z18 \
+      --force \
+      --output-to-directory $TILES_OUT_DIR \
+      --layer $LAYER_NAME \
+      --drop-densest-as-needed \
+      --no-tile-compression \
+      $FILE
   fi
-
-  tippecanoe $TILE_MAXZOOM_OPTION \
-    --force \
-    --output-to-directory $TILES_OUT_DIR \
-    --layer $LAYER_NAME \
-    --drop-densest-as-needed \
-    --no-tile-compression \
-    $FILE
 
   find $TILES_OUT_DIR -name "*.pbf" -exec sh -c 'mv "$1" "${1%.pbf}".mvt' - '{}' \;
 
