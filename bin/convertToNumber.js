@@ -27,7 +27,7 @@ const formatCoordinates = (filePath) => {
     features: features
   }
 
-  fs.writeFileSync(filePath , JSON.stringify(newGeojson))
+  fs.writeFileSync(filePath, JSON.stringify(newGeojson))
 
 }
 

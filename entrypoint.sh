@@ -36,20 +36,20 @@ node /convertToNumber.js $FILE
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
   GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
 else
-  
+
   echo "Converting GeoJSON to MBTiles..."
 
   if [ "$TIPPECANOE_OPTIONS" ]; then
-
+    echo "Using tippecanoe with extra options: $TIPPECANOE_OPTIONS"
     tippecanoe $TIPPECANOE_OPTIONS \
       --force \
       --output-to-directory $TILES_OUT_DIR \
       --layer $LAYER_NAME \
       --no-tile-compression \
       $FILE
-      
+
   else
-  
+
     tippecanoe -z18 \
       --force \
       --output-to-directory $TILES_OUT_DIR \
