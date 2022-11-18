@@ -25,7 +25,7 @@ jobs:
           file: ./test/data.geojson           # [Required] Data source
           out_dir: ./docs                     # [Optional] Parent directory where tiles are generated as `<out_dir>/tiles`
           geolonia_access_token: 0a1b2c3d4e5f # [Optional] If specified, out_dir is ignored and Geolonia Locations is used. Otherwise, out_dir is respected and deployed to GitHub Pages
-          layer:                              # [Optional] Layer name, default value is g-simplestyle-v1
+          layer: sample-layer                 # [Optional] Layer name, default value is g-simplestyle-v1
           tippecanoe_options: -z 20 -Z4       # [Optional] If specified, default tippecanoe options except --force, --output-to-directory, --layer, --no-tile-compression are ignored.
 ```
 
