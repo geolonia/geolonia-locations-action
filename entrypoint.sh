@@ -56,6 +56,9 @@ else
       --layer $LAYER_NAME \
       --drop-densest-as-needed \
       --no-tile-compression \
+      --drop-rate=1 \
+      --no-feature-limit \
+      --no-tile-size-limit \
       $FILE
   fi
 
