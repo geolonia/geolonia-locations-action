@@ -34,7 +34,7 @@ fi
 node /convertToNumber.js $FILE
 
 if [ $GEOLONIA_ACCESS_TOKEN ]; then
-  GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia upload-locations $1
+  GEOLONIA_ACCESS_TOKEN=$GEOLONIA_ACCESS_TOKEN geolonia locations upload $1
 else
 
   echo "Converting GeoJSON to MBTiles..."
