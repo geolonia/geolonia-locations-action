@@ -1,7 +1,12 @@
 FROM ubuntu:latest
 
 # Install tippeacanoe
-RUN apt-get update && apt-get -y install \
+RUN \
+  apt-get update && apt-get -y install \
+    curl \
+  && \
+  (curl -fsSL https://deb.nodesource.com/setup_18.x | bash -) && \
+  apt-get update && apt-get -y install \
 		git \
 		make \
 		build-essential \
@@ -10,7 +15,6 @@ RUN apt-get update && apt-get -y install \
 		libsqlite3-dev \
 		zlib1g-dev \
 		nodejs \
-		npm \
 		jq \
 	&& \
 	mkdir -p /tmp/build && cd /tmp/build && \
@@ -20,7 +24,7 @@ RUN apt-get update && apt-get -y install \
   make install && \
 	cd /tmp && \
 	rm -r /tmp/build && \
-	npm install -g @geolonia/cli@0.0.10 && \
+	npm install -g @geolonia/cli@^0.1 && \
 	apt-get remove -y git make build-essential g++ zlib1g-dev libsqlite3-dev && \
 	apt-get autoremove -y && \
 	rm -rf /var/lib/apt/lists/*
