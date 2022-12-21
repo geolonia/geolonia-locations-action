@@ -1,7 +1,12 @@
 FROM ubuntu:latest
 
 # Install tippeacanoe
-RUN apt-get update && apt-get -y install \
+RUN \
+  apt-get update && apt-get -y install \
+    curl \
+  && \
+  (curl -fsSL https://deb.nodesource.com/setup_18.x | bash -) && \
+  apt-get update && apt-get -y install \
 		git \
 		make \
 		build-essential \
@@ -10,7 +15,6 @@ RUN apt-get update && apt-get -y install \
 		libsqlite3-dev \
 		zlib1g-dev \
 		nodejs \
-		npm \
 		jq \
 	&& \
 	mkdir -p /tmp/build && cd /tmp/build && \
